@@ -1,6 +1,3 @@
-import $ from 'jquery'
-import './index.css';
+import {utils} from './utils';
 
-$('#main').text('Hello, webpack!');
-
-console.trace('Hello')
+console.log(utils.util1());

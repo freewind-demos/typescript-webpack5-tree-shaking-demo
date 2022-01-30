@@ -1,9 +1,13 @@
 import {Configuration} from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: Configuration = {
-  mode: "development",
+  mode: "production",
   entry: './src/entry.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,22 +18,13 @@ const config: Configuration = {
   },
   module: {
     rules: [{
-      test: /\.css$/,
-      use: [
-        {loader: 'style-loader'},
-        {loader: 'css-loader'}
-      ]
-    }, {
       test: /\.ts$/,
-      loader: 'ts-loader',
+      use: [
+        'ts-loader',
+      ],
       exclude: /node_modules/
     }]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }) as any
-  ]
+  }
 }
 
 export default config;
