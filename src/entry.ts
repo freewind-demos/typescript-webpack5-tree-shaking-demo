@@ -1,3 +1,4 @@
 import {utils} from './utils';
 
-console.log(utils.util1());
+const utilStr = utils.util1();
+console.log(utilStr);
