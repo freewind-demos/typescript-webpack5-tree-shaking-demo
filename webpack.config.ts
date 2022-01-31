@@ -1,8 +1,8 @@
 import {Configuration} from 'webpack';
 import path from 'path';
 import {dirname} from 'path';
-import {fileURLToPath} from 'url';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
+import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -33,7 +33,7 @@ const config: Configuration = {
         terserOptions: {
           compress: {
             defaults: false, // set all recommended configs to false since we want to demo only some configs
-            dead_code: false, // remove dead_code in functions
+            dead_code: true, // remove dead_code in functions
             unused: true, // remove unused functions
             keep_fnames: true,
             keep_classnames: true,
