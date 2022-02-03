@@ -20,6 +20,12 @@ TypeScript Webpack5 Tree Shaking Demo
 3. 不需要babel-loader
 4. package.json不需要声明`sideEffects:false`
 
+注意：
+由于在`tsconfig.json`中把`module`设为`ES2020`而不是`CommonJS`会带来很多不便，比如webpack.config.ts的导入，以及通过命令行执行代码等，
+更好的做法是利用`@babel/typescript-preset`来进行转换（而非使用ts-loader）。由于`@babel/typescript-preset`转换时只是简单地去掉类型信息，
+所以它不看`tsconfig.json`里的设置，这样我们可以继续在`tsconfig.json`中保持`CommonJS`
+
+参看 typescript-webpack5-react-tree-shaking-demo
 
 ```
 npm install

@@ -3,6 +3,7 @@ import path from 'path';
 import {dirname} from 'path';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import {fileURLToPath} from 'url';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,6 +27,11 @@ const config: Configuration = {
       exclude: /node_modules/
     }]
   },
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: './dist/bundleContentReport.html'
+    })],
   optimization: {
     minimize: true,
     minimizer: [
